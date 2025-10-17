@@ -1,0 +1,42 @@
+# ========================================
+# Unity Gitignore Básico para proyectos 2D pequeños
+# ========================================
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+
+# Configuración local (no se comparte)
+UserSettings/
+MemoryCaptures/
+
+# Visual Studio / Rider / JetBrains
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+.idea/
+.vscode/
+.vs/
+
+# Crash reports
+sysinfo.txt
+*.stacktrace
+
+# Auto-generated Asset meta files (ya que tenemos poquitos sprites, los mantenemos)
+# No ignoramos Assets ni Packages porque queremos subirlos
