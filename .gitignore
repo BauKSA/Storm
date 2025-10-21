@@ -13,6 +13,7 @@ Thumbs.db
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
+.Builds/
 
 # Configuración local (no se comparte)
 UserSettings/

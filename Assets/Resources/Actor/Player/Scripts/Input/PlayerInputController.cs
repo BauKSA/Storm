@@ -34,6 +34,11 @@ public class PlayerInputController : MonoBehaviour
 
         //ATTACK
         inputController.Player.Attack.started += gameObject.AddComponent<PlayerAttack>().Execute;
+
+        //FLOWERING
+        inputController.Player.Flowering.started += gameObject.AddComponent<PlayerFlowering>().Execute;
+        inputController.Player.Flowering.canceled += gameObject.GetComponent<PlayerFlowering>().Stop;
+
     }
 
     private void Update()

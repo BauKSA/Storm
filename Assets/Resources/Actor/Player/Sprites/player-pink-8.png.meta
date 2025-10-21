@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c0bb720a0c864bf4aad69db004bd4cd3
+guid: 5cff297f5fbec5b49a361e717a991b6b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6710241550191920354
-    second: sprout_0
+      213: 2222953913333105356
+    second: player-pink-8_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprout_0
+      name: player-pink-8_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1b7ebbccde60e2a0800000000000000
-      internalID: -6710241550191920354
+      spriteID: cc2c8447ec489de10800000000000000
+      internalID: 2222953913333105356
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b07737ffd0fb15d4dbfb77f848805a3c
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      sprout_0: -6710241550191920354
+      player-pink-8_0: 2222953913333105356
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

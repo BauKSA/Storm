@@ -626,6 +626,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower
       objectReference: {fileID: 0}
+    - target: {fileID: 4945790122519548256, guid: 41bbf7c35514721428658c025a07c3ed, type: 3}
+      propertyPath: m_Size.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945790122519548256, guid: 41bbf7c35514721428658c025a07c3ed, type: 3}
+      propertyPath: m_Size.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945790122519548256, guid: 41bbf7c35514721428658c025a07c3ed, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7863172965491036679, guid: 41bbf7c35514721428658c025a07c3ed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6710241550191920354, guid: c0bb720a0c864bf4aad69db004bd4cd3, type: 3}
+    - target: {fileID: 7863172965491036679, guid: 41bbf7c35514721428658c025a07c3ed, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

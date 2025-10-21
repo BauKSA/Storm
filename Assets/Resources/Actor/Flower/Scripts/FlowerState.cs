@@ -10,11 +10,25 @@ public enum EFlowerState
     FLOWER
 };
 
+public enum EFlowerColours
+{
+    NONE,
+    PINK
+}
+
 public class FlowerState : MonoBehaviour
 {
     public EFlowerState State { get; private set; } = EFlowerState.SPROUT;
-    private const float nextStateDelay = 2f;
+    public EFlowerColours Colour {  get; private set; } = EFlowerColours.NONE;
+
+    private float nextStateDelay = 2f;
     private float currentTime = 0;
+
+    private void Awake()
+    {
+        //TODO: Traer un color random
+        Colour = EFlowerColours.PINK;
+    }
 
     void Update()
     {
@@ -59,5 +73,15 @@ public class FlowerState : MonoBehaviour
             case EFlowerState.FLOWER:
                 return EFlowerState.FLOWER;
         }
+    }
+
+    public void Reset()
+    {
+        //TODO: Mejorar el sistema de aumento de delay
+        State = EFlowerState.BLOOMING;
+        nextStateDelay += 1f;
+
+        AnimationController animationController = GetComponent<AnimationController>();
+        animationController.StartAnimation("Flower_blooming");
     }
 }
