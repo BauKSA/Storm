@@ -7,7 +7,7 @@ public class AnimationController : MonoBehaviour
     private Animator animator;
 
     private string lastAnimation = "";
-    private string currentAnimation = "Player_idle";
+    private string currentAnimation = "";
     //private readonly string DefaultAnimation = "Player_idle";
 
     private bool endAfterLooped = false;
@@ -19,6 +19,7 @@ public class AnimationController : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        if(!animator) Debug.LogError("Animator component not found in AnimationController");
     }
 
     private void Update()

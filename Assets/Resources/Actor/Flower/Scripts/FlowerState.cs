@@ -1,87 +1,46 @@
 using UnityEngine;
 
-public enum EFlowerState
-{
-    SPROUT,
-    SMALL_STEM,
-    LEAF,
-    LONG_STEM,
-    BLOOMING,
-    FLOWER
-};
-
-public enum EFlowerColours
-{
+public enum EFlowerColours {
     NONE,
-    PINK
+    LIGTHBLUE,
+    YELLOW,
+    PURPLE,
+    PINK,
+    ORANGE
+}
+
+public enum EFlowerState {
+    GROWING,
+    FLOWER,
+    DAMAGED
 }
 
 public class FlowerState : MonoBehaviour
 {
-    public EFlowerState State { get; private set; } = EFlowerState.SPROUT;
-    public EFlowerColours Colour {  get; private set; } = EFlowerColours.NONE;
+    public EFlowerColours Colour { get; private set; } = EFlowerColours.NONE;
+    public EFlowerState State { get; private set; } = EFlowerState.GROWING;
 
-    private float nextStateDelay = 2f;
-    private float currentTime = 0;
+    public void SelectColour() {
+        if(Colour != EFlowerColours.NONE) return;
 
-    private void Awake()
-    {
-        //TODO: Traer un color random
-        Colour = EFlowerColours.PINK;
+        int randomColour = Random.Range(1, 6);
+        Colour = (EFlowerColours)randomColour;
+
+        State = EFlowerState.FLOWER;
     }
 
-    void Update()
+    public void EndFlowering()
     {
-        if (State == EFlowerState.FLOWER) return;
-
-        currentTime += Time.deltaTime;
-        if (currentTime >= nextStateDelay)
-        {
-            currentTime -= nextStateDelay;
-            State = NextState();
-            Debug.Log($"Next state: {State}");
-        }
+        Destroy(gameObject);
     }
 
-    private EFlowerState NextState()
+    public void Damage()
     {
-
-        //TODO: Seguramente se pueda mejorar un poco esto... pero por ahora lo dejo así
-        AnimationController animationController = GetComponent<AnimationController>();
-        if (!animationController) return EFlowerState.FLOWER;
-
-        switch (State)
-        {
-            default:
-                animationController.StartAnimation("Flower_flower");
-                return EFlowerState.FLOWER;
-            case EFlowerState.SPROUT:
-                animationController.StartAnimation("Flower_smallstem");
-                return EFlowerState.SMALL_STEM;
-            case EFlowerState.SMALL_STEM:
-                animationController.StartAnimation("Flower_leaf");
-                return EFlowerState.LEAF;
-            case EFlowerState.LEAF:
-                animationController.StartAnimation("Flower_longstem");
-                return EFlowerState.LONG_STEM;
-            case EFlowerState.LONG_STEM:
-                animationController.StartAnimation("Flower_blooming");
-                return EFlowerState.BLOOMING;
-            case EFlowerState.BLOOMING:
-                animationController.StartAnimation("Flower_pinkflower");
-                return EFlowerState.FLOWER;
-            case EFlowerState.FLOWER:
-                return EFlowerState.FLOWER;
-        }
+        State = EFlowerState.DAMAGED;
     }
 
-    public void Reset()
+    public void StopDamage()
     {
-        //TODO: Mejorar el sistema de aumento de delay
-        State = EFlowerState.BLOOMING;
-        nextStateDelay += 1f;
-
-        AnimationController animationController = GetComponent<AnimationController>();
-        animationController.StartAnimation("Flower_blooming");
+        State = EFlowerState.FLOWER;
     }
 }

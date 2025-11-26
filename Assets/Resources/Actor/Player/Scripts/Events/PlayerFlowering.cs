@@ -17,11 +17,15 @@ public class PlayerFlowering : Event
         return colour switch
         {
             EFlowerColours.PINK => "pink",
+            EFlowerColours.PURPLE => "purple",
+            EFlowerColours.LIGTHBLUE => "lightblue",
+            EFlowerColours.YELLOW => "yellow",
+            EFlowerColours.ORANGE => "orange",
             _ => "idle",
         };
     }
 
-    public override void Execute(InputAction.CallbackContext context)
+    private void StartFlowering()
     {
         if (!playerState.IsOnFlower) return;
 
@@ -31,11 +35,35 @@ public class PlayerFlowering : Event
         animationController.StartAnimation($"Player_{GetFlowerColour(playerState.FlowerColour)}", true, playerState.EndFlowering);
     }
 
-    public override void Stop(InputAction.CallbackContext context)
+    private void StopFlowering()
     {
-        if(!playerState.IsOnFlower) return;
+        if (!playerState.IsOnFlower) return;
 
         playerState.StopFlowering();
         animationController.StartAnimation("Player_idle");
+    }
+
+    private void StartSeed()
+    {
+
+        if (!playerState) return;
+        if (!playerState.IsOnMud || !playerState.CurrentMud) return;
+        if(Game.Instance.Seeds <= 0) return;
+
+        Instantiate(Game.Instance.Seed, playerState.CurrentMud.transform.position, playerState.CurrentMud.transform.rotation);
+        Destroy(playerState.CurrentMud);
+
+        Game.Instance.Seeds -= 1;
+    }
+
+    public override void Execute(InputAction.CallbackContext context)
+    {
+        if (playerState.IsOnFlower) StartFlowering();
+        else if (playerState.IsOnMud) StartSeed();
+    }
+
+    public override void Stop(InputAction.CallbackContext context)
+    {
+        if (playerState.IsOnFlower) StopFlowering();
     }
 }

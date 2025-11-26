@@ -15,6 +15,8 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.CompareTag("ant") && !playerState.IsAttacking)
         {
+            if (!playerState.IsVulnerable) return;
+
             playerState.Damage();
             animationController.StartAnimation("Player_damage");
         }
@@ -24,9 +26,16 @@ public class PlayerCollision : MonoBehaviour
             FlowerState flowerState = other.gameObject.GetComponent<FlowerState>();
             if (!flowerState) return;
 
+
             if (flowerState.State != EFlowerState.FLOWER) return;
 
             PlayerOnFlower.OnFlower(gameObject, other.gameObject);
+        }
+
+        if(other.CompareTag("mud"))
+        {
+            Debug.Log("Entered Mud");
+            playerState.OnMud(other.gameObject);
         }
     }
 
@@ -38,7 +47,33 @@ public class PlayerCollision : MonoBehaviour
             {
                 playerState.StopDamage();
                 Destroy(other.gameObject);
+                Game.Instance.Seeds += 1;
+
+                if(Game.Instance.Seeds > Game.Instance.MaxSeeds)
+                {
+                    Game.Instance.Seeds = Game.Instance.MaxSeeds;
+                }
             }
+        }
+
+        if(other.CompareTag("flower"))
+        {
+            if (playerState.IsFlowering) return;
+
+            FlowerState flowerState = other.gameObject.GetComponent<FlowerState>();
+            if (!flowerState) return;
+
+
+            if (flowerState.State != EFlowerState.FLOWER) return;
+
+            PlayerOnFlower.OnFlower(gameObject, other.gameObject);
+        }
+
+
+        if (other.CompareTag("mud") && !playerState.IsOnMud)
+        {
+            Debug.Log("Staying in Mud");
+            playerState.OnMud(other.gameObject);
         }
     }
 
@@ -48,6 +83,19 @@ public class PlayerCollision : MonoBehaviour
         {
             playerState.StopDamage();
             animationController.SetNextAnimation("Player_idle");
+        }
+
+        if (other.CompareTag("flower"))
+        {
+            PlayerOnFlower.LeftFlower(gameObject);
+            animationController.SetNextAnimation("Player_idle");
+        }
+
+
+        if (other.CompareTag("mud"))
+        {
+            Debug.Log("Left Mud");
+            playerState.LeftMud();
         }
     }
 }

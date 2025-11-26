@@ -15,7 +15,7 @@ public class DropCollision : MonoBehaviour
 
         Sprite sprite = renderer.sprite;
 
-        verticalLimit = Random.Range(-1 + sprite.rect.y, 0);
+        verticalLimit = Random.Range(-0.9f, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -26,20 +26,18 @@ public class DropCollision : MonoBehaviour
         MovementController movementController = GetComponent<MovementController>();
         if(!movementController) return;
 
-        movementController.SetMoveDown(false);
 
         if (other.CompareTag("player"))
         {
-            PlayerWet.Wet(other);
-            pendingDestroy = true;
-        }
-        else
-        {
-            AnimationController animation = GetComponent<AnimationController>();
-            if(!animation) return;
+            PlayerState playerState = other.GetComponent<PlayerState>();
+            if (!playerState) return;
+            if (!playerState.IsVulnerable) return;
 
-            animation.StartAnimation("Drop_fall", true, SelfDestroy);
-            fallen = true;
+            movementController.SetMoveDown(false);
+
+            PlayerWet.Wet(other);
+            Game.Instance.Health -= Game.Instance.DropDamage;
+            pendingDestroy = true;
         }
     }
 
@@ -62,6 +60,8 @@ public class DropCollision : MonoBehaviour
 
         if(position.Position.y <= verticalLimit)
         {
+            fallen = true;
+
             MovementController movementController = GetComponent<MovementController>();
             if (!movementController) return;
 

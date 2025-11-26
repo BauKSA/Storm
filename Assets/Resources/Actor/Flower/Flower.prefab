@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7757496888235064702}
   - component: {fileID: 3593121966200791937}
   - component: {fileID: 4945790122519548256}
+  - component: {fileID: -5688123336515102741}
   m_Layer: 0
   m_Name: Flower
   m_TagString: flower
@@ -84,12 +85,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6710241550191920354, guid: c0bb720a0c864bf4aad69db004bd4cd3, type: 3}
+  m_Sprite: {fileID: 3864835571506659483, guid: 2b091de3c9b80d34591d3febefa3222e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.64}
+  m_Size: {x: 0.16, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -202,15 +203,27 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.64}
-    newSize: {x: 0.16, y: 0.64}
+    oldSize: {x: 0.16, y: 0.32}
+    newSize: {x: 0.16, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.22, y: 0.64}
+  m_Size: {x: 0.01, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &-5688123336515102741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4640210547690591305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbef5a6324d9f864c8a11bf972c5421e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlowerBeingAlive

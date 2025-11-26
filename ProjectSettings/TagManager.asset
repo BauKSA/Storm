@@ -8,6 +8,8 @@ TagManager:
   - ant
   - drop
   - flower
+  - thunder
+  - mud
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Wall
   - 
   - 
   - 
@@ -44,6 +46,18 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Flower
+    uniqueID: 1637643091
+    locked: 0
+  - name: Player
+    uniqueID: 764986965
+    locked: 0
+  - name: Ant
+    uniqueID: 3601310701
+    locked: 0
+  - name: Thunder
+    uniqueID: 936161935
     locked: 0
   m_RenderingLayers:
   - Default

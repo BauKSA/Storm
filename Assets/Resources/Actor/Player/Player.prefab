@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6251879368633779628}
   - component: {fileID: 3971238071593399542}
   - component: {fileID: 3181738723004924025}
+  - component: {fileID: 4040147571265136017}
   - component: {fileID: 4922433956866958092}
   - component: {fileID: 350064779683514386}
   m_Layer: 0
@@ -170,7 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6381508a00f97e343a044ce90afd7631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frameCount: 0
 --- !u!114 &3971238071593399542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +195,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509d145d6d18f4d45bc5d9894e686f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4040147571265136017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8922978041792682724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65697026907a80c4fb2c7287c48c234f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBeingAlive
 --- !u!61 &4922433956866958092
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -266,5 +278,5 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0

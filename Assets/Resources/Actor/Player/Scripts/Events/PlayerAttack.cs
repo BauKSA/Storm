@@ -13,7 +13,12 @@ public class PlayerAttack : Event
 
     public override void Execute(InputAction.CallbackContext context)
     {
+        if(!playerState || !playerState.CanAttack) return;
+
         playerState.Attack();
-        animationController.StartAnimation("Player_attack", true, playerState.StopAttack);
+        animationController.StartAnimation("Player_attack", true, () => {
+            playerState.StopAttack();
+            animationController.StartAnimation("Player_idle");
+        });
     }
 }

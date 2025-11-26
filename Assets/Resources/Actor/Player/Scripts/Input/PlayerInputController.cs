@@ -61,4 +61,9 @@ public class PlayerInputController : MonoBehaviour
             if (e) e.Execute(cb);
         }
     }
+
+    private void OnDestroy()
+    {
+        inputController.Disable();
+    }
 }
